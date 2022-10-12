@@ -1,8 +1,10 @@
 
 import { useState } from "react";
-import Form from "../Form";
+import Form from "../../pages/Form";
 import {Context} from "../../context";
-import ContainerUser from "../ContainerUser";
+import {Routes, Route} from "react-router-dom";
+import PageContainer from "../../pages/PageContainer";
+import NavBar from "../NavBar";
 
 
 function App() {
@@ -24,9 +26,12 @@ const delGender = (gend_num) =>setUsers(users.filter(elem=>elem.gender !== gend_
   return (
     <>
     <Context.Provider value = {{users, addForm, dellUser, delGender}}>
-    <Form/>
-    <ContainerUser/>
-    </Context.Provider>
+      <NavBar/>
+      <Routes>
+    <Route path ="/Form" element = {<Form/>}/>
+   <Route path = "PageContainer" element = {<PageContainer/>}/>
+    </Routes>
+     </Context.Provider>
     </>
   );
 }
